@@ -1,0 +1,46 @@
+version: 3
+
+vars:
+  baseDir: ../..
+  configDir: config
+  toolsDir: tool
+  distDir: dist
+
+run: once
+
+includes:
+  ci:
+    taskfile: ci
+    dir: '{{ .baseDir }}'
+  custom:
+    taskfile: custom
+    dir: '{{ .baseDir }}'
+    optional: true
+  dev:
+    taskfile: dev
+    dir: '{{ .baseDir }}'
+  go:
+    taskfile: go
+    dir: '{{ .baseDir }}'
+  infra:
+    taskfile: infra
+    dir: '{{ .baseDir }}'
+  reusable:
+    taskfile: reusable
+    dir: '{{ .baseDir }}'
+    # Make these available in these namespaces
+    aliases:
+      - ci
+      - go
+  run:
+    taskfile: run
+    dir: '{{ .baseDir }}'
+
+tasks:
+  ci:
+    desc: Run CI tasks
+    cmds:
+      - task: go:format
+      - task: go:tidy
+      - task: go:test
+      - task: ci:lint-all
