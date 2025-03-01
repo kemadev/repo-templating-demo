@@ -1,3 +1,3 @@
-module github.com/kemadev/repo-templating-demo/v2
+module github.com/kemadev/repo-templating-demo
 
 go 1.24.0
