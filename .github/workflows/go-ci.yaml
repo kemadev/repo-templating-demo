@@ -1,0 +1,24 @@
+name: Go - CI
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - unlocked
+      - reopened
+    paths:
+      - '**go.mod'
+      - '**go.sum'
+      - '**.go'
+  workflow_dispatch: {}
+
+jobs:
+  go-ci:
+    name: Go - CI
+    uses: kemadev/workflows-and-actions/.github/workflows/go-ci.yaml@main
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
