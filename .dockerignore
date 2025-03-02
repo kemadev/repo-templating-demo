@@ -1,0 +1,20 @@
+# File managed by repo-as-code, do not edit manually!
+
+.dockerignore
+.editorconfig
+.gitattributes
+.gitignore
+LICENSE
+**/*.md
+**/*_test.go
+**/.env.*
+
+.github/
+dist/
+build/
+deploy/
+example/
+schema/
+testdata/
+tool/
+website/
