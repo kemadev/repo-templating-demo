@@ -7,6 +7,10 @@ on:
       - unlabeled
       - milestoned
       - demilestoned
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
   workflow_call: {}
 
 defaults:
@@ -14,8 +18,8 @@ defaults:
     shell: bash
 
 jobs:
-  report-stale-branches:
-    name: Report stale branches
+  add-to-project:
+    name: Add to project
     permissions:
       repository-projects: write
       discussions: write
@@ -32,6 +36,7 @@ jobs:
           echo "${{ github.event.assignee.email }}"
           echo "${{ github.event.assignee.type }}"
           echo "${{ github.event.project.name }}"
+
           echo "${{ github.event.issue.active_lock_reason }}"
           echo "${{ github.event.issue.assignee.login }}"
           echo "${{ github.event.issue.assignees[0].login }}"
@@ -47,8 +52,8 @@ jobs:
           echo "${{ github.event.issue.milestone.open_issues }}"
           echo "${{ github.event.issue.number }}"
           echo "${{ github.event.issue.reactions.confused }}"
-          echo "${{ github.event.issue.reactions.'+1' }}"
-          echo "${{ github.event.issue.reactions.'-1' }}"
+          echo "${{ github.event.issue.reactions['+1'] }}"
+          echo "${{ github.event.issue.reactions['-1'] }}"
           echo "${{ github.event.issue.reactions.total_count }}"
           echo "${{ github.event.issue.reactions.rocket }}"
           echo "${{ github.event.issue.sub_issues_summary.total }}"
@@ -59,6 +64,55 @@ jobs:
           echo "${{ github.event.issue.title }}"
           echo "${{ github.event.issue.updated_at }}"
           echo "${{ github.event.issue.user.login }}"
+
+          echo "${{ github.event.pull_request._links.issue.href }}"
+          echo "${{ github.event.pull_request._links.self.href }}"
+          echo "${{ github.event.pull_request.additions }}"
+          echo "${{ github.event.pull_request.active_lock_reason }}"
+          echo "${{ github.event.pull_request.assignee.login }}"
+          echo "${{ github.event.pull_request.assignees[0].login }}"
+          echo "${{ github.event.pull_request.author_association }}"
+          echo "${{ github.event.pull_request.draft }}"
+          echo "${{ github.event.pull_request.base.ref }}"
+          echo "${{ github.event.pull_request.base.label }}"
+          echo "${{ github.event.pull_request.base.repo.name }}"
+          echo "${{ github.event.pull_request.base.repo.owner.login }}"
+          echo "${{ github.event.pull_request.base.user }}"
+          echo "${{ github.event.pull_request.changed_files }}"
+          echo "${{ github.event.pull_request.comments }}"
+          echo "${{ github.event.pull_request.commits }}"
+          echo "${{ github.event.pull_request.deletions }}"
+          echo "${{ github.event.pull_request.head.ref }}"
+          echo "${{ github.event.pull_request.head.label }}"
+          echo "${{ github.event.pull_request.head.repo.name }}"
+          echo "${{ github.event.pull_request.head.repo.owner.login }}"
+          echo "${{ github.event.pull_request.head.user }}"
+          echo "${{ github.event.pull_request.issue_url }}"
+          echo "${{ github.event.pull_request.labels.name }}"
+          echo "${{ github.event.pull_request.labels[0].name }}"
+          echo "${{ github.event.pull_request.labels_url }}"
+          echo "${{ github.event.pull_request.locked }}"
+          echo "${{ github.event.pull_request.maintainer_can_modify }}"
+          echo "${{ github.event.pull_request.mergeable }}"
+          echo "${{ github.event.pull_request.mergeable_state }}"
+          echo "${{ github.event.pull_request.merged }}"
+          echo "${{ github.event.pull_request.merged_at }}"
+          echo "${{ github.event.pull_request.merged_by.login }}"
+          echo "${{ github.event.pull_request.milestone.title }}"
+          echo "${{ github.event.pull_request.milestone.due_on }}"
+          echo "${{ github.event.pull_request.milestone.state }}"
+          echo "${{ github.event.pull_request.milestone.open_issues }}"
+          echo "${{ github.event.pull_request.number }}"
+          echo "${{ github.event.pull_request.rebaseable }}"
+          echo "${{ github.event.pull_request.requested_reviewers[0].login }}"
+          echo "${{ github.event.pull_request.requested_teams[0].name }}"
+          echo "${{ github.event.pull_request.review_comments }}"
+          echo "${{ github.event.pull_request.state }}"
+          echo "${{ github.event.pull_request.state_reason }}"
+          echo "${{ github.event.pull_request.title }}"
+          echo "${{ github.event.pull_request.updated_at }}"
+          echo "${{ github.event.pull_request.user.login }}"
+
           echo "${{ github.repository_owner }}"
           echo "${{ github.repository }}"
           echo "${{ github.triggering_actor }}"
