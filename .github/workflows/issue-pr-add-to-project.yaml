@@ -11,6 +11,8 @@ on:
     types:
       - labeled
       - unlabeled
+    branches:
+      - '*'
   workflow_call: {}
 
 defaults:
@@ -31,7 +33,7 @@ jobs:
         id: add-to-project
         run: |
           echo "Event infos"
-          echo " github.event.action                                      ${{ github.event.action }}"
+          echo " github.event.action                                      ${{ github.event.action }}" - labeled / unlabeled
           echo " github.event.assignee.login                              ${{ github.event.assignee.login }}"
           echo " github.event.assignee.email                              ${{ github.event.assignee.email }}"
           echo " github.event.assignee.type                               ${{ github.event.assignee.type }}"
@@ -116,4 +118,4 @@ jobs:
           echo " github.repository_owner                                  ${{ github.repository_owner }}"
           echo " github.repository                                        ${{ github.repository }}"
           echo " github.triggering_actor                                  ${{ github.triggering_actor }}"
-          echo " github.ref_name                                           github.ref_name }}"
+          echo " github.ref_name                                          ${{ github.ref_name }}"
