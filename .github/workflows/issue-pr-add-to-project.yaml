@@ -11,8 +11,6 @@ on:
     types:
       - labeled
       - unlabeled
-    branches:
-      - '*'
   workflow_call: {}
 
 defaults:
